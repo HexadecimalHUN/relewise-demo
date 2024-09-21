@@ -81,7 +81,7 @@ export default function Home() {
                             <h1 className='text-md font-semibold'>API Address 👮📬 </h1>
                             <div className='flex flex-row justify-center'>
                                 <h1>Method:</h1>
-                                <h1 className='font-semibold text-blue-800'>GET</h1>
+                                <h1 className='font-semibold text-blue-800'>POST</h1>
                             </div> 
                             <h2>http://localhost:5000/api/exerciseone/execute</h2>
                         </div>
@@ -97,7 +97,7 @@ export default function Home() {
                             <h1 className='text-md font-semibold'>API Address 👮📬 </h1>
                             <div className='flex flex-row justify-center'>
                                 <h1>Method:</h1>
-                                <h1 className='font-semibold text-blue-800'>GET</h1>
+                                <h1 className='font-semibold text-blue-800'>POST</h1>
                             </div> 
                             <h2>http://localhost:5000/api/exercisetwo/execute</h2>
                         </div>
@@ -114,7 +114,7 @@ export default function Home() {
                             <h1 className='text-md font-semibold'>API Address 👮📬 </h1>
                             <div className='flex flex-row justify-center'>
                                 <h1>Method:</h1>
-                                <h1 className='font-semibold text-blue-800'>GET</h1>
+                                <h1 className='font-semibold text-blue-800'>POST</h1>
                             </div> 
                             <h2>http://localhost:5000/api/exercisethree/execute</h2>
                         </div>
@@ -129,7 +129,7 @@ export default function Home() {
                             <h1 className='text-md font-semibold'>API Address 👮📬 </h1>
                             <div className='flex flex-row justify-center'>
                                 <h1>Method:</h1>
-                                <h1 className='font-semibold text-blue-800'>GET</h1>
+                                <h1 className='font-semibold text-blue-800'>POST</h1>
                             </div> 
                             <h2>http://localhost:4000/api/exercisefour/execute</h2>
                         </div>
