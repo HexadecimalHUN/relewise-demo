@@ -1,0 +1,33 @@
+services:
+  backend-api:
+    build:
+      context: .
+      dockerfile: back-end.API/Dockerfile
+    ports:
+      - "5000:5000" #Map port 5000 to acces the .Net API
+    networks:
+      - app-network
+  
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" #Map port 3000 to acces the Next.js front-end
+    networks:
+      - app-network
+    depends_on:
+      - backend-api
+
+  node-backend:
+    build:
+      context: ./node-backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000" # Map port 4000 to acces the Express API
+    networks:
+      - app-network
+    
+networks:
+  app-network:
+    driver: bridge
