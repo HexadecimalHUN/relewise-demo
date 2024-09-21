@@ -30,8 +30,8 @@ This repository contains multiple services that work together to provide a backe
  ### Installation and Setup 
  1. **Clone the repository**: 
 ```bash 
-	git clone <your-repo-url> 
-	cd <your-repo-directory>
+	git clone https://github.com/HexadecimalHUN/relewise-demo.git 
+	cd relewise-demo
 ```
 2. **Build and run the services with Docker Compose**:
 ```bash
