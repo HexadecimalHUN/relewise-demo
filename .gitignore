@@ -5,3 +5,5 @@ bin/
 obj/
 .vs/
 .vscode/
+# Next.js build output
+.next
