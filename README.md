@@ -35,7 +35,7 @@ This repository contains multiple services that work together to provide a backe
 ```
 2. **Build and run the services with Docker Compose**:
 ```bash
-    docker-compose up --build 
+	docker-compose up --build 
 ```
 3. **Access the services**:
 
@@ -48,9 +48,9 @@ This repository contains multiple services that work together to provide a backe
     
     If you want to run just the frontend locally without Docker:
 ```bash
-    cd front-end
-    npm install
-    npm run ded
+	cd front-end
+	npm install
+	npm run ded
 ```
    
     
@@ -59,9 +59,9 @@ This repository contains multiple services that work together to provide a backe
     To run the Node.js backend locally:
     
 ```bash
-    cd node-backend
-    npm install
-    npm start
+	cd node-backend
+	npm install
+	npm start
 ```
     
 -   **.NET API Backend**:
@@ -79,7 +79,7 @@ This repository contains multiple services that work together to provide a backe
 To stop all services, run:
 
 ```bash
-   docker-compose down
+	docker-compose down
 ```
 
 ### Troubleshooting
