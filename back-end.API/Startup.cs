@@ -8,19 +8,19 @@ using Microsoft.Extensions.Hosting;
 namespace back_end.API{
     public class Startup{
         public void ConfigureServices(IServiceCollection services){
-            // Enable CORS for the whole application
+
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins", builder =>
                 {
                     builder.AllowAnyOrigin()   // Allows requests from any origin (http://localhost:3000 in your case)
-                        .AllowAnyMethod()   // Allows any HTTP method (GET, POST, etc.)
-                        .AllowAnyHeader();  // Allows any headers
+                        .AllowAnyMethod()   
+                        .AllowAnyHeader();  
                 });
             });
 
 
-            //Register Conrtrollers
             services.AddControllers();
 
             //Register ExerciseOne Related Services
@@ -35,7 +35,6 @@ namespace back_end.API{
             services.AddScoped<ExerciseThreeService>();
             services.AddScoped<ExerciseThreeJob>();
 
-            //Enable HttppClient Injection
             services.AddHttpClient();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env){

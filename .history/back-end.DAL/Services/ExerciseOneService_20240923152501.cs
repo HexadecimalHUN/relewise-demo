@@ -52,5 +52,6 @@ namespace back_end.DAL.Services{
                 throw new Exception("Error: Unable to reach the API. Please check your network connection.", ex);
             }
         }
+
     }
 }

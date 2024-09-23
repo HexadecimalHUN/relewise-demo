@@ -36,7 +36,7 @@ class ExerciseFourJob extends IJob {
 
     async execute(jobArguments, info, warn, token) {
         try {
-
+            // Fetch product data (simulating the data access layer)
             const productDataList = await this.productService.getProductData();
 
             //Setting up default language
@@ -50,6 +50,7 @@ class ExerciseFourJob extends IJob {
                     return 'Operation was cancelled';
                 }
 
+                // Ensure the product has a valid ID
                 if (!productData.productId) {
                     await warn('Product ID is null or empty, skipping product.');
                     continue;
@@ -82,32 +83,12 @@ class ExerciseFourJob extends IJob {
     }
 }
 
+// Simulated ProductService that fetches product data
 class ProductService {
     async getProductData() {
-        try{
-            //Hardcoding response address, since we know it is not going to change
-            const response = await axios.get('https://cdn.relewise.com/academy/productdata/customjsonfeed');
-            switch (response.status){
-                case 200:
-                    return response.data;   
-                case 404:
-                    throw new Error('Error: The requested resource was not found.');
-                case 500:
-                    throw new Error('Error: Internal server error at the Relewise API.');
-                default:
-                    throw new Error(`Unexpected status code: ${response.status}`);
-
-
-            }
-        }catch(error){
-            if (error.response) {
-                throw new Error(`HTTP error: ${error.response.status} - ${error.response.statusText}`);
-            } else if (error.request) {
-                throw new Error('Error: No response received from the API.');
-            } else {
-                throw new Error(`Error: ${error.message}`);
-            }
-        }     
+        // Fetch product data from the JSON feed
+        const response = await axios.get('https://cdn.relewise.com/academy/productdata/customjsonfeed');
+        return response.data;
     }
 }
 
@@ -115,7 +96,7 @@ class ProductService {
 const productService = new ProductService();
 const exerciseFourJob = new ExerciseFourJob(productService);
 
-//Initializing endpoint
+// POST endpoint to trigger the job
 app.post('/api/exercisefour/execute', async (req, res) => {
     const { datasetId, apiKey, jobConfiguration } = req.body;
     const jobArguments = new JobArguments(datasetId, apiKey, jobConfiguration);
@@ -128,6 +109,7 @@ app.post('/api/exercisefour/execute', async (req, res) => {
     }
 });
 
+// Start the Express server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

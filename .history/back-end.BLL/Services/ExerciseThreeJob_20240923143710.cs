@@ -23,16 +23,18 @@ namespace back_end.BLL.Services{
             Func<string, Task> warn,
             CancellationToken token
         ){
+            //Parse raw product data
             List<RawProductData> rawProducts = await _exerciseThreeService.GetRawProductDatasAsync();
+
+            //Map products to Relewise product objects
             List<Product>relewiseProducts = new List<Product>();
-
             foreach(var rawProduct in rawProducts){
-
+                //Parse SalesPrice and ListPrice into Money Objects
                 var listPrice = !string.IsNullOrEmpty(rawProduct.ListPrice) ? ParseMoney(rawProduct.ListPrice) : null;
                 var salesPrice = !string.IsNullOrEmpty(rawProduct.SalesPrice) ? ParseMoney(rawProduct.SalesPrice) : null;
                 
                 var displayName = new Multilingual(new Multilingual.Value(new Language("en"), rawProduct.ProductName));
-                var id = rawProduct.ProductId ?? string.Empty;
+                var id = rawProduct.ProductId ?? string.Empty; // Ensure you have an ID
 
                 var relewiseProduct = new Product(id){
                     DisplayName = displayName,
@@ -42,8 +44,12 @@ namespace back_end.BLL.Services{
 
                 relewiseProducts.Add(relewiseProduct);
             }
+             // Log information about the number of products mapped
             await info($"{relewiseProducts.Count} products got mapped.");
+
+            // Return a summary message
             return $"{relewiseProducts.Count} products got mapped.";
+
         }
 
         private Money ParseMoney(string priceString)

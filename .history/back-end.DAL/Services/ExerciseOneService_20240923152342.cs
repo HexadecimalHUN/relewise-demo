@@ -48,9 +48,18 @@ namespace back_end.DAL.Services{
                         throw new Exception($"Error: Unexpected status code {response.StatusCode}.");
                 }   
             }
-            catch(HttpRequestException ex){
-                throw new Exception("Error: Unable to reach the API. Please check your network connection.", ex);
+
+            
+            
+            
+
+            //Checking for null reference
+            if (productDataList == null){
+                throw new Exception("Failed to deserialize product data.");
             }
+
+            return productDataList;
         }
+
     }
 }
